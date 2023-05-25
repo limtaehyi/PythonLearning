@@ -4,7 +4,7 @@ from email.mime.multipart import MIMEMultipart
 
 # 보내는 사람 계정 설정
 me = 'lt75355@naver.com'
-password = ''
+password = '---'
 
 # 받는 사람 계정 설정
 you = 'lt75355@naver.com'
