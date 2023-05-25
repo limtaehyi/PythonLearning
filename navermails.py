@@ -4,7 +4,7 @@ from email.header import decode_header
 
 # 사용자 정보
 username = "lt75355"
-password = "xodlagml95155*"
+password = ""
 
 # 네이버 메일 서버 접속
 imap = imaplib.IMAP4_SSL("imap.naver.com")
