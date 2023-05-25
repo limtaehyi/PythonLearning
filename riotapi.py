@@ -1,6 +1,6 @@
 import requests
 
-api_key = "RGAPI-03af00bd-4e57-4b49-b325-5913b83dfa47"
+api_key = "---"
 summoner_name = 'limion'
 
 # 소환사명으로 소환사 정보 가져오기
