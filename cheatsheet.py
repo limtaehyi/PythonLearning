@@ -324,3 +324,17 @@ with open("test.txt","r") as savedfile2:
         #readlines() 모든 줄을 각각의 형태로 리스트로 저장함.
         print(savedfile2.readlines())
 savedfile.close()
+
+print("13. ---------------------------------------------------------")
+
+class makeclass():
+  def __init__:
+    print("you make this object")
+    
+  def printdef(self,hellow):
+    print("!!printdef!!")
+    print(hellow)
+
+
+newobject = makeclass()
+newobject.printdef("print this")
