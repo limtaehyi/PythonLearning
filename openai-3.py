@@ -3,7 +3,9 @@
 import openai
 import os
 
-# OpenAI API 인증키 설정
+# !! -- OpenAI API 인증키 설정 -- !!
+# https://platform.openai.com/account/api-keys에서 키를 다운로드 받고 내 PC -> 속성 -> 고급 시스템 설정 -> 환경변수 -> 시스템 변수 -> 편집에서
+# OPENAI_API_KEY라고 이름을 새로 만들고 sk-... 형식을 값으로 넣으면 됨
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
 # 문장 생성 함수
