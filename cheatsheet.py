@@ -1,6 +1,8 @@
 #120191099 임태희
 
 # !! -- txts/test.txt -- !!
+# !! -- firstfolder/firstfile.py -- !!
+# !! -- firstfolder/secondfolder/secondfile.py -- !!
 
 # 변수 이름은 대부분 언더바(_)로 정의하거나 첫문자마다 대문자를 쓰는 낙타체를 많이씀.
 # 변수 이름은 가시성을 위해 동사+명사의 형태로 쓰는 것이 좋음.
@@ -9,7 +11,7 @@ UseCamelVar = 2
 
 
 
-print("1. ---------------------------------------------------------")
+print("1. -------------------------------------------------------------------")
 
 test_int = 101
 test_str = 'test1 test11'
@@ -47,7 +49,7 @@ print(type(test_tup))
 print(type(test_list))
 print(type(test_dict))
 
-print("2. ---------------------------------------------------------")
+print("2. -------------------------------------------------------------------")
 
 modint = 10
 
@@ -68,7 +70,7 @@ print(modint)
 modint ^= 2 #modint = modint ^ 2
 print(modint)
 
-print("3. ---------------------------------------------------------")
+print("3. -------------------------------------------------------------------")
 
 num_conv = 17
 
@@ -77,7 +79,7 @@ print(oct(num_conv))# 8진수
 print(num_conv)     # 10진수
 print(hex(num_conv))# 16진수
 
-print("4. ---------------------------------------------------------")
+print("4. -------------------------------------------------------------------")
 
 test_int = 101
 test_str = 'test1 test11'
@@ -105,7 +107,7 @@ print(chr(97))
 print(chr(122))
 
 
-print("5. ---------------------------------------------------------")
+print("5. -------------------------------------------------------------------")
 
 test_str = 'test1 test11'
 test_list = [103, 'test3', [1033, 'test3-1']]
@@ -134,7 +136,7 @@ print(test_list)
 test_list.pop()
 print(test_list)
 
-print("6. ---------------------------------------------------------")
+print("6. -------------------------------------------------------------------")
 
 test_list = [103, 'test3', [1033, 'test3-1']]
 
@@ -144,7 +146,7 @@ for i in range(10):
 for j in test_list:
         print(j)
 
-print("7. ---------------------------------------------------------")
+print("7. -------------------------------------------------------------------")
 
 test_str = 'test1 test11'
 
@@ -199,7 +201,7 @@ if "t" not in test_str:
 else:
         print("9no")
 
-print("8. ---------------------------------------------------------")
+print("8. -------------------------------------------------------------------")
 
 counter = 0
 while 1:
@@ -208,7 +210,7 @@ while 1:
         if counter == 10:
                 break
         
-print("9. ---------------------------------------------------------")
+print("9. -------------------------------------------------------------------")
 
 enumerate_list = ["hi","my","name","is","LTH"]
 
@@ -242,7 +244,7 @@ print(result_comp_list1)
 print(result_comp_list2)
 
 
-print("10. ---------------------------------------------------------")
+print("10. -------------------------------------------------------------------")
 
 
 def no_para_no_ret():
@@ -276,7 +278,7 @@ print(receive1_return)
 print(receive2_return)
 
 
-print("11. ---------------------------------------------------------")
+print("11. -------------------------------------------------------------------")
 
 '''
  ValueError: 잘못된 값을 입력했을 때 발생
@@ -305,7 +307,7 @@ finally:
         print("ending")
 
 
-print("12. ---------------------------------------------------------")
+print("12. -------------------------------------------------------------------")
 
 with open("test.txt","w") as newfile:
         for k in range(10):
@@ -327,16 +329,51 @@ with open("test.txt","r") as savedfile2:
         print(savedfile2.readlines())
 savedfile.close()
 
-print("13. ---------------------------------------------------------")
+print("13. -------------------------------------------------------------------")
 
-class makeclass():
-  def __init__:
+class makeclass:
+  def __init__(self):
     print("you make this object")
     
   def printdef(self,hellow):
     print("!!printdef!!")
-    print(hellow)
+    print("received : "+hellow)
 
 
 newobject = makeclass()
-newobject.printdef("print this")
+newobject.printdef("i will give this parameter to you")
+
+print("14. -------------------------------------------------------------------")
+
+import firstfolder.firstfile
+import firstfolder.secondfolder.secondfile as sf
+
+firstfolder.firstfile.firstprint()
+sf.secondprint()
+
+print("15. -------------------------------------------------------------------")
+
+import asyncio
+
+async def my_coroutine(name, seconds_to_wait):
+    print(f'{name} 시작됨.')
+    await asyncio.sleep(seconds_to_wait)
+    print(f'{name} 종료됨.')
+
+async def asyncmain():
+    tasks = [
+        asyncio.ensure_future(my_coroutine("첫 번째 작업", 2)),
+        asyncio.ensure_future(my_coroutine("두 번째 작업", 3)),
+        asyncio.ensure_future(my_coroutine("세 번째 작업", 1))
+    ]
+    await asyncio.gather(*tasks)
+
+
+asyncio.run(asyncmain())
+
+print("16. -------------------------------------------------------------------")
+
+numbers = [1, 2, 3, 4, 5]
+squares = map(lambda x: x ** 2, numbers)
+
+print(list(squares))
