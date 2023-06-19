@@ -1,14 +1,15 @@
 #120191099 임태희
 
+# !! -- 필수파일 -- !!
 # !! -- txts/test.txt -- !!
 # !! -- firstfolder/firstfile.py -- !!
 # !! -- firstfolder/secondfolder/secondfile.py -- !!
 
 # 변수 이름은 대부분 언더바(_)로 정의하거나 첫문자마다 대문자를 쓰는 낙타체를 많이씀.
 # 변수 이름은 가시성을 위해 동사+명사의 형태로 쓰는 것이 좋음.
+
 use_underbar_var = 1
 UseCamelVar = 2
-
 
 
 print("1. -------------------------------------------------------------------")
@@ -148,8 +149,6 @@ for j in test_list:
 
 print("7. -------------------------------------------------------------------")
 
-test_str = 'test1 test11'
-
 if 1 == 1:
         print("1yes")
 else:
@@ -187,6 +186,7 @@ if 1 == True:
 else:
         print("7no")
 
+test_str = 'test1 test11'
 
 if "k" in test_str:
         print("8yes")
@@ -256,7 +256,9 @@ def no_para_yes_ret():
         print("no_para_yes_ret")
         return a
         
-#get_para처럼 def의 소괄호 안에 있는 값은 복사 개념으로 생각하면 됨.
+#get_para처럼 def의 소괄호 안에 있는 값은 직접 가져가는 것이 아니라 복사 개념이고 return으로 값을
+#받아와서 덮어 쓰는 방법이 있음.
+
 def yes_para_no_ret(get_para):
         get_para += 1
         print("yes_para_no_ret")
@@ -345,10 +347,19 @@ newobject.printdef("i will give this parameter to you")
 
 print("14. -------------------------------------------------------------------")
 
-import firstfolder.firstfile
+'''
+  import의 검색 순서는 sys.modules, built-in modules, sys.path 순서이다.
+   - sys.modules : Python이 Module/Package를 찾기 위해 가장 먼저 확인하는 곳입니다.
+                   단순한 Directory로 이미 import된 module과 Package를 저장하고 있습니다.
+   - built-in modules : Python에서 제공하는 공식 Library 들 입니다.Python Standard Library(os,  sys, time 등)이
+                        여기에 해당됩니다.
+   - sys.path : package의 __init__ 변수와 같이 String Value로된 list 입니다.
+'''
+
+from firstfolder.firstfile import firstprint #or *
 import firstfolder.secondfolder.secondfile as sf
 
-firstfolder.firstfile.firstprint()
+firstprint()
 sf.secondprint()
 
 print("15. -------------------------------------------------------------------")
@@ -377,3 +388,5 @@ numbers = [1, 2, 3, 4, 5]
 squares = map(lambda x: x ** 2, numbers)
 
 print(list(squares))
+
+list(filter(lambda x: x < 5, range(10)))
