@@ -169,37 +169,47 @@ if (1 == 2 and 2 == 2) or (1 == 3 or 4 == 4):
 else:
         print("4no")
 
-if 1 != 2:
+if 1 == 2:
         print("5yes")
 else:
         print("5no")
 
-
-if 0 == True:
+if 1 == 0:
         print("6yes")
-elif 1 == True:
+else:
         print("6no")
 
-
-if 1 == True:
+if "1" == "2":
         print("7yes")
 else:
         print("7no")
 
+
+if 0 == True:
+        print("8yes")
+elif 1 == True:
+        print("8no")
+
+
+if 1 == True:
+        print("9yes")
+else:
+        print("9no")
+
 test_str = 'test1 test11'
 
 if "k" in test_str:
-        print("8yes")
+        print("10yes")
 elif "t" in test_str:
-        print("8no")
+        print("10no")
 else:
         print("..")
 
 
 if "t" not in test_str:
-        print("9yes")
+        print("11yes")
 else:
-        print("9no")
+        print("11no")
 
 print("8. -------------------------------------------------------------------")
 
