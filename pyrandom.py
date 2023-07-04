@@ -11,8 +11,8 @@ print("Random float between 1 and 10:", rand_float_range)
 rand_integer = random.randint(1, 100)
 print("Random integer between 1 and 100:", rand_integer)
 
-rand_integer_range = random.randrange(1, 100, 5)
-print("Random integer between 1 and 100, multiple of 5:", rand_integer_range)
+rand_integer_range = random.randrange(1, 100, 7)
+print("Random integer between 1 and 100, multiple of 7:", rand_integer_range-1)
 
 # 시퀀스에서 무작위 선택
 choices = ['apple', 'banana', 'cherry', 'orange']
