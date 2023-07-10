@@ -240,9 +240,11 @@ for ind, val in enumerate(enumerate_list):
         print(ind, " --- ", val)
 
 
-format_num = 100
+format_num1 = 100
+format_num2 = 200
 # f'{}'는 문자안에 변수를 사용하고 싶을때 사용함.
-print(f"this is format_number : {format_num}")
+print(f"1. this is format_number1 : {format_num1}, format_number2 : {format_num2}")
+print("2. this is format_number1 : {}, format_number2 : {}".format(format_num1, format_num2))
 
 # .split("??") ??값을 기준으로 나눈후 리스트 형태로 저장함.
 split_this_strings = "Split this string using spaces by utilizing the split function."
