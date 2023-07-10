@@ -245,7 +245,7 @@ format_num = 100
 print(f"this is format_number : {format_num}")
 
 # .split("??") ??값을 기준으로 나눈후 리스트 형태로 저장함.
-split_this_strings = "split this strings with space using the split func"
+split_this_strings = "Split this string using spaces by utilizing the split function."
 print(split_this_strings.split(" "))
 
 # "??".join(!!) !!에 있는 값들을 ??를 이용해서 붙인후 문자열로 반환함.
