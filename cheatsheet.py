@@ -9,7 +9,7 @@
 # 변수 이름은 가시성을 위해 동사+명사의 형태로 쓰는 것이 좋음.
 
 use_underbar_var = 1
-UseCamelVar = 2
+UseCamelVar = 3
 
 '''
  1. 변수 이름은 문자(a-zA-Z), 숫자(0-9), 밑줄(_)로 구성해야 합니다.
