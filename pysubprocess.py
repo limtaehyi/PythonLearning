@@ -2,7 +2,7 @@ import subprocess
 
 # Example 1: subprocess.run()
 def run_example():
-    result = subprocess.run(["echo", "Hello from subprocess"], stdout=subprocess.PIPE, text=True)
+    result = subprocess.run("echo Hello from subprocess", stdout=subprocess.PIPE, text=True, shell=True)
     print("Example 1: using subprocess.run()")
     print("Return code:", result.returncode)
     print("Output:", result.stdout)
@@ -10,7 +10,7 @@ def run_example():
 
 # Example 2: subprocess.Popen()
 def popen_example():
-    process = subprocess.Popen(["echo", "Hello from Popen"], stdout=subprocess.PIPE, text=True)
+    process = subprocess.Popen("echo Hello from Popen", stdout=subprocess.PIPE, text=True, shell=True)
     output, error = process.communicate()
     print("Example 2: using subprocess.Popen()")
     print("Return code:", process.returncode)
@@ -19,14 +19,14 @@ def popen_example():
 
 # Example 3: subprocess.call()
 def call_example():
-    return_code = subprocess.call(["echo", "Hello from call"])
+    return_code = subprocess.call("echo Hello from call", shell=True)
     print("Example 3: using subprocess.call()")
     print("Return code:", return_code)
     print("")
 
 # Example 4: subprocess.check_output()
 def check_output_example():
-    output = subprocess.check_output(["echo", "Hello from check_output"], text=True)
+    output = subprocess.check_output("echo Hello from check_output", text=True, shell=True)
     print("Example 4: using subprocess.check_output()")
     print("Output:", output)
     print("")
