@@ -1,5 +1,5 @@
-import random
 #-*- encoding: utf-8 -*-
+import random
 
 def main():
     number_list = [1,2,3,4,5,6]
