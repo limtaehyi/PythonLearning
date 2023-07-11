@@ -196,16 +196,15 @@ else:
         print("7no")
 
 
-if 0 == True:
-        print("8yes")
-elif 1 == True:
-        print("8no")
-
-
+if 0 == False:
+        print("8_1")
 if 1 == True:
-        print("9yes")
-else:
-        print("9no")
+        print("8_2")
+if 2 == True:
+        print("8_3")
+if "anystrings" == True:
+        print("8_4")
+
 
 test_str = 'test1 test11'
 
