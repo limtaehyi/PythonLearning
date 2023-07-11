@@ -151,12 +151,19 @@ print(test_list)
 print("6. -------------------------------------------------------------------")
 
 test_list = [103, 'test3', [1033, 'test3-1']]
+empty_list = []
 
 for i in range(10):
         print(i)
+
+
+for j in range(2):
+        for k in range(3):
+                empty_list.append((j,k))
+print(empty_list)
         
-for j in test_list:
-        print(j)
+for n in test_list:
+        print(n)
 
 print("7. -------------------------------------------------------------------")
 
@@ -229,6 +236,8 @@ while 1:
         print(counter)
         if counter == 10:
                 break
+        else:
+                continue
         
 print("9. -------------------------------------------------------------------")
 
@@ -262,8 +271,10 @@ print(list(map(ord,mapping_this_list)))
 comprehension_list = ["tail","alphabet","egg","horse","elment","error"]
 result_comp_list1 = [i for i in comprehension_list]
 result_comp_list2 = [i[0] for i in comprehension_list]
+result_comp_list3 = [(i, j) for i in range(3) for j in range(4)]
 print(result_comp_list1)
 print(result_comp_list2)
+print(result_comp_list3)
 
 
 print("10. -------------------------------------------------------------------")
@@ -318,11 +329,12 @@ print("11. -------------------------------------------------------------------")
 '''
 
 try:
+        print("can you divide 1 with zero?")        
         print(1/0)
         
 except ZeroDivisionError as ex:
-        print("can you divide 1 with zero?")
-        print("so you can see this ZeroDivisionError")
+
+        print("can see this ZeroDivisionError?")
         print("+++++++++++++++++++++++++++++++++++++")
         print(ex)
         print("+++++++++++++++++++++++++++++++++++++")
