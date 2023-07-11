@@ -209,17 +209,17 @@ if "anystrings" == True:
 test_str = 'test1 test11'
 
 if "k" in test_str:
-        print("10yes")
+        print("9yes")
 elif "t" in test_str:
-        print("10no")
+        print("9no")
 else:
         print("..")
 
 
 if "t" not in test_str:
-        print("11yes")
+        print("10yes")
 else:
-        print("11no")
+        print("10no")
 
 print("8. -------------------------------------------------------------------")
 
