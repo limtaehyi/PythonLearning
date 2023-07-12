@@ -238,6 +238,17 @@ while 1:
                 break
         else:
                 continue
+
+
+iterator_num = iter(range(3))
+print("1 :",next(iterator_num))
+print("2 :",next(iterator_num))
+print("3 :",next(iterator_num))
+try:
+        print("4.",next(iterator_num))
+except Exception as ex:
+        print("you over 4 times")
+        print(ex)
         
 print("9. -------------------------------------------------------------------")
 
@@ -266,6 +277,15 @@ print("+".join(list_to_strings))
 # map(??,!!)은 for문의 축약 형태이며 !!에 있는 각각의 값들에 ??함수를 적용함.
 mapping_this_list = ["a","b","c","d","z"]
 print(list(map(ord,mapping_this_list)))
+
+# filter(??,!!)은 map과 비슷한 형태이지만 True, False로 포함할지를 결정 가능함.
+filtering_this_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+def is_even(n):
+    return True if n % 2 == 0 else False
+
+print(list(filter(is_even, filtering_this_list)))
+
 
 # for문을 줄여 쓸수 있음.
 comprehension_list = ["tail","alphabet","egg","horse","elment","error"]
@@ -423,4 +443,22 @@ squares = map(lambda x: x ** 2, numbers)
 
 print(list(squares))
 
-list(filter(lambda x: x < 5, range(10)))
+print(list(filter(lambda x: x < 5, range(10))))
+
+print("17. -------------------------------------------------------------------")
+
+import time
+start_time = time.time()
+
+#20000의 약수를 구하는 간단한 코드
+decimal_list = []
+for i in range(2, 20000):
+        if 20000 % i != 0:
+                continue
+        else:
+                decimal_list.append(i)
+
+print(decimal_list)
+
+end_time = time.time()
+print(end_time - start_time)
