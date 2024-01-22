@@ -156,6 +156,9 @@ empty_list = []
 for i in range(10):
         print(i)
 
+for a in range(1,10):
+        print(a)
+
 
 for j in range(2):
         for k in range(3):
