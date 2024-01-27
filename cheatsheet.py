@@ -304,6 +304,14 @@ print(result_comp_list1)
 print(result_comp_list2)
 print(result_comp_list3)
 
+#문자 바꾸기
+swap_a = 100
+swap_b = 300
+print(f"Before swap swap_a, swap_b : {swap_a}, {swap_b}")
+
+swap_a, swap_b = swap_b, swap_a
+print(f"After swap swap_a, swap_b : {swap_a}, {swap_b}")
+
 
 print("10. -------------------------------------------------------------------")
 
