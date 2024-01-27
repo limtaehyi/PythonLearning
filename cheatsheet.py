@@ -268,6 +268,11 @@ format_num2 = 200
 print(f"1. this is format_number1 : {format_num1}, format_number2 : {format_num2}")
 print("2. this is format_number1 : {}, format_number2 : {}".format(format_num1, format_num2))
 
+format_string = "stringsu"
+format_num3 = 3.141592
+print("3. this is format_string : %s, format_string[5] : %c" %(format_string, format_string[5]))
+print("4. this is format_num3: %f, format_num3 : %3f, format_num3 : %07.13f" %(format_num3, format_num3, format_num3))
+
 # .split("??") ??값을 기준으로 나눈후 리스트 형태로 저장함.
 split_this_strings = "Split this string using spaces by utilizing the split function."
 print(split_this_strings.split(" "))
