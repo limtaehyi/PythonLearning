@@ -479,3 +479,18 @@ print(decimal_list)
 
 end_time = time.time()
 print(end_time - start_time)
+
+print("18. -------------------------------------------------------------------")
+
+# test는 인자를 2개를 받는데 y=[], y=0 처럼 default값을 지정해 줄 수가 있다.
+# 하지만 python의 특이한 특성이 있는데 처음 실행은 default이지만 두번째 실행시 y는 메모리에 가지고 있기
+# 때문에 지역변수이지만 전역변수처럼 남아 계속 수정된다. ★x5
+
+def test(x, y=[]):
+        y.append(x)
+        return y
+
+print(test(1)) # test(x=1, y=[])
+print(test(2)) # test(x=2, y=[1])  <- 위에 함수에서 return y가 리스트 '[1]' 로 메모리에 저장되어있다.
+print(test(3, [])) # test(x=3, y=[1,2], [])  <- y는 메모리 어딘가에 계속 있고 다시 아무 리스트를 준곳에 append된다.
+print(test(4)) # test(x=4, y=[1,2])
