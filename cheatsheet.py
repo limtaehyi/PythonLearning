@@ -250,7 +250,7 @@ print("3 :",next(iterator_num))
 try:
         print("4.",next(iterator_num))
 except Exception as ex:
-        print("you over 4 times")
+        print("you over 3 times")
         print(ex)
         
 print("9. -------------------------------------------------------------------")
@@ -258,8 +258,8 @@ print("9. -------------------------------------------------------------------")
 enumerate_list = ["hi","my","name","is","LTH"]
 
 # 2개의 값중 첫번째 값은 인덱스(순서) 두번째 값은 값을 반환함.
-for ind, val in enumerate(enumerate_list):
-        print(ind, " --- ", val)
+for index, value in enumerate(enumerate_list):
+        print(index, " --- ", value)
 
 
 format_num1 = 100
@@ -271,7 +271,7 @@ print("2. this is format_number1 : {}, format_number2 : {}".format(format_num1, 
 format_string = "stringsu"
 format_num3 = 3.141592
 print("3. this is format_string : %s, format_string[5] : %c" %(format_string, format_string[5]))
-print("4. this is format_num3: %f, format_num3 : %3f, format_num3 : %07.13f" %(format_num3, format_num3, format_num3))
+print("4. this is format_num3: %f, format_num3 : %.3f, format_num3 : %07.13f" %(format_num3, format_num3, format_num3))
 
 # .split("??") ??값을 기준으로 나눈후 리스트 형태로 저장함.
 split_this_strings = "Split this string using spaces by utilizing the split function."
@@ -321,7 +321,7 @@ def no_para_no_ret():
         print("no_para_no_ret")
 
 def no_para_yes_ret():
-        a = 1
+        a = 2
         print("no_para_yes_ret")
         return a
         
@@ -329,11 +329,11 @@ def no_para_yes_ret():
 #받아와서 덮어 쓰는 방법이 있음.
 
 def yes_para_no_ret(get_para):
-        get_para += 1
+        get_para += 3
         print("yes_para_no_ret")
 
 def yes_para_yes_ret(get_para):
-        get_para += 1
+        get_para += 4
         print("yes_para_no_ret")
         return get_para
 
@@ -351,6 +351,81 @@ print(receive2_return)
 
 print("11. -------------------------------------------------------------------")
 
+
+# 파이썬 함수에서 매개변수를 지정할 수 있는 함수의 종류는 6가지 이다.
+
+# 1. 필수인자
+# 함수 정의시 지정된 순서 대로 정확한 개수의 인자를 전달해야 하며 개수가 맞지 않으면 TypeError 발생
+def greet(name):
+        print(f"hello, {name}")
+
+greet("LTH")
+
+
+# 2. 기본인자
+# 함수 정의 시 매개변수에 기본 값을 넣을 수 있으며 함수 호출시 해당 인자를 생략하면 기본값이 사용됨
+# 기본 인자는 무조건 필수 인자 뒤에 위치 해야 함
+def power(base, exponent=2):
+        return base ** exponent
+
+print(power(4))
+print(power(4, 3))
+
+
+# 3. 가변 인자 리스트
+# 임의의 개수의 위치 인자를 받을 수 있도록 하며 * 기호를 통해 정의 함, 관례적으로는 args를 사용 하며 함수 내에 튜플로 처리 됨
+def sum_all(*args):
+        total = 0
+        for num in args:
+                total += num
+        return total
+
+print(sum_all(1, 2, 3))
+print(sum_all(1, 2, 3, 4, 5))
+
+
+# 4. 키워드 인자 리스트
+# 임의의 개수의 키워드 인자를 받을 수 있도록 하며 ** 기호를 통해 정의 함, 관례적으로 kwargs를 사용 하며 함수 내에서 딕셔너리로 처리 됨
+def print_info(**kwargs):
+        for key, value in kwargs.items():
+                print(f"{key}: {value}")
+
+print_info(name="Bob", age=30, city="New York")
+
+
+# 5. 키워드 전용 인자
+# 함수 호출시 반드시 키워드 형태로 전달해야 하며, *args 뒤에 위치하거나 * 기호만 사용하여 정의
+def divide(x, y, *, integer_divide=False):
+        if integer_divide:
+                return x // y
+        else:
+                return x / y
+
+print(divide(10, 2))
+print(divide(10, 2, integer_divide=True))
+try:
+        print(divide(10, 2, True))
+except:
+        print("Third parameter is not a keyword, it's a positional argument")
+
+
+# 6. 위치 전용 인자
+# 함수 호출시 반드시 위치 인자 형태로 전달되어야 한다.
+# / 기호를 사용하며, / 앞에 있는 인자들이 위치 전용 인자가 됨
+def combine(a, b, /, c, d):
+        return a + b + c + d
+
+print(combine(1, 2, 3, 4))
+print(combine(1, 2, c=5, d=7))
+
+try:
+        print(combine(a=1, b=2, c=3, d=4))
+except:
+        print("First and Second parameters are must be arguments")
+
+
+print("12. -------------------------------------------------------------------")
+
 '''
  SyntaxError : 문법적으로 잘못 되었을때 발생
  ValueError: 잘못된 값을 입력했을 때 발생
@@ -366,7 +441,7 @@ print("11. -------------------------------------------------------------------")
 '''
 
 try:
-        print("can you divide 1 with zero?")        
+        print("can you divide 1 with zero?")
         print(1/0)
         
 except ZeroDivisionError as ex:
@@ -380,7 +455,7 @@ finally:
         print("ending")
 
 
-print("12. -------------------------------------------------------------------")
+print("13. -------------------------------------------------------------------")
 
 with open("test.txt","w") as newfile:
         for k in range(10):
@@ -388,6 +463,7 @@ with open("test.txt","w") as newfile:
 newfile.close()
 
 with open("test.txt","r") as savedfile:
+        #test.txt의 파일 정보를 출
         print(savedfile)
         #read() 모든 값을 형태 그대로 읽어옴.
         print(savedfile.read())
@@ -398,25 +474,34 @@ with open("test.txt","r") as savedfile1:
         print(savedfile1.readline())
 
 with open("test.txt","r") as savedfile2:
-        #readlines() 모든 줄을 각각의 형태로 리스트로 저장함.
+        #readlines() 모든 줄의 각각의 형태를 리스트로 저장함.
         print(savedfile2.readlines())
 savedfile.close()
 
-print("13. -------------------------------------------------------------------")
+print("14. -------------------------------------------------------------------")
 
 class makeclass:
-  def __init__(self):
-    print("you make this object")
-    
-  def printdef(self,hellow):
-    print("!!printdef!!")
-    print("received : "+hellow)
+        #__init__은 생성자로서 객체가 생성될 때 실행 됨.
+        #self는 이 클래스로 인해 만들어진 객체가 들어가며 id 함수를 통해 메모리 주소를 확인 할 수 있다. 
+        def __init__(self):
+                print(self)
+                print(id(self))
+                print("you make this object")
+                
+        def printdef(self,hellow):
+                print("!!printdef!!")
+                print("received : "+hellow)
 
 
-newobject = makeclass()
+newobject = makeclass() #이때 생성자 실행
+print(id(newobject)) #self 값이 객체가 맞는지 확인
 newobject.printdef("i will give this parameter to you")
 
-print("14. -------------------------------------------------------------------")
+otherobject = makeclass()
+print(id(newobject))
+otherobject.printdef("i will give this parameter too")
+
+print("15. -------------------------------------------------------------------")
 
 '''
   import의 검색 순서는 sys.modules, built-in modules, sys.path 순서이다.
@@ -433,7 +518,7 @@ import firstfolder.secondfolder.secondfile as sf
 firstprint()
 sf.secondprint()
 
-print("15. -------------------------------------------------------------------")
+print("16. -------------------------------------------------------------------")
 '''
    - 동기는 차례대로 앞의 작업이 끝나면 처리하는 방식이다.
    - 순차적인 작업을 할때 사용된다. (python 프로그램)
@@ -471,7 +556,7 @@ async def asyncmain():
 
 asyncio.run(asyncmain())
 
-print("16. -------------------------------------------------------------------")
+print("17. -------------------------------------------------------------------")
 
 numbers = [1, 2, 3, 4, 5]
 squares = map(lambda x: x ** 2, numbers)
@@ -480,7 +565,7 @@ print(list(squares))
 
 print(list(filter(lambda x: x < 5, range(10))))
 
-print("17. -------------------------------------------------------------------")
+print("18. -------------------------------------------------------------------")
 
 import time
 start_time = time.time()
@@ -498,7 +583,7 @@ print(decimal_list)
 end_time = time.time()
 print(end_time - start_time)
 
-print("18. -------------------------------------------------------------------")
+print("19. -------------------------------------------------------------------")
 
 # test는 인자를 2개를 받는데 y=[], y=0 처럼 default값을 지정해 줄 수가 있다.
 # 하지만 python의 특이한 특성이 있는데 처음 실행은 default이지만 두번째 실행시 y는 메모리에 가지고 있기
