@@ -8,6 +8,12 @@
 # 변수 이름은 대부분 언더바(_)로 정의하거나 첫문자마다 대문자를 쓰는 낙타체를 많이씀.
 # 변수 이름은 가시성을 위해 동사+명사의 형태로 쓰는 것이 좋음.
 
+'''
+  주석은 한 줄은 샵으로 하고 여러줄 주석은 세미콜론 3개로 사용함.
+  one line comment : #
+  multi line comment : 'x3
+'''
+
 use_underbar_var = 1
 UseCamelVar = 3
 
@@ -22,7 +28,6 @@ UseCamelVar = 3
  잘못된 변수 이름: 1counter, variable@1, my-name
 '''
 
-
 print("1. -------------------------------------------------------------------")
 
 test_int = 101
@@ -30,13 +35,15 @@ test_str = 'test1 test11'
 test_tup = (102,'test2')
 test_list = [103, 'test3', [1033, 'test3-1']]
 test_dict = { 104:"test4", 1044:"test4-1" }
-'''
-  one line comment : #
-  multi line comment : 'x3
-'''
 
 print("hi")
 get_input = input("input : ")
+
+# 매우 긴 문자열을 넣어야 할때는 역슬래쉬(또는 원싸인\)을 통해 아직 안 끝났다고 정의 할 수 있음. 하지만 역슬래쉬 뒤에 주석 불가
+very_long_string = "very very long string very very long string very very long string very very long string very very long string very very long string very very long string very very long string "\
+                   "very very long string very very long string very very long string very very long string very very long string very very long string very very long string very very long string "\
+                   "very very long string very very long string very very long string very very long string very very long string very very long string very very long string very very long string "
+print(very_long_string)
 
 print("string1","comma","string2")
 print("string1"+"plus"+"string2")
@@ -54,42 +61,52 @@ print(test_tup)
 print(test_list)
 print(test_dict)
 
-
 print(type(test_int))
 print(type(test_str))
 print(type(test_tup))
 print(type(test_list))
 print(type(test_dict))
 
+'''
+ is 함수들로 변수 타입 판별 가능, 맞으면 true 반환
+ - isnumeric : 숫자로만 이루어져 있는지 판별. 수학 기호, 분수, 지수, 로마 숫자도 숫자로 인식
+ - isdecimal : 숫자로만 이루어져 있는지 판별. 소수점, 마이너스 기호, 달러등 문자가 하나라도 들어가 있으면 false 
+ - isdigit : 숫자로만 이루어져 있는지 판별. 소수점, 마이너스 기호, 달러등 문자가 하나라도 들어가 있으면 false 
+ - isalpha : 알파벳 문자로만 이루어져 있는지 판별. 숫자, 특수문자가 하나라도 들어가 있으면 false
+ - isalnum : 알파벳, 숫자로만 이루어져 있는지 판별. 특수 문자가 들어가 있으면 false
+'''
+
+test_int.isnumeric
+
 print("2. -------------------------------------------------------------------")
 
 modint = 10
 
-modint += 1 #modint = modint + 1
+modint += 1 # modint = modint + 1, 덧셈
 print(modint)
-modint -= 1 #modint = modint - 1
+modint -= 1 # modint = modint - 1, 뺄셈
 print(modint)
-modint *= 2 #modint = modint * 2
+modint *= 2 # modint = modint * 2, 곱셈
 print(modint)
-modint //= 2 #modint = modint // 2
+modint //= 2 # modint = modint // 2, 나머지 무시하는 나눗셈의 몫
 print(modint)
-modint /= 2 #modint = modint / 2
+modint /= 2 # modint = modint / 2, 소수점까지 구하는 나눗셈
 print(modint)
 
 modint = 10
-modint %= 3 #modint = modint % 3
+modint %= 3 # modint = modint % 3, 나누고 난 후의 나머지
 print(modint)
-modint ^= 2 #modint = modint ^ 2
+modint ^= 2 # modint = modint ^ 2, 제곱
 print(modint)
 
 print("3. -------------------------------------------------------------------")
 
 num_conv = 17
 
-print(bin(num_conv))# 2진수
-print(oct(num_conv))# 8진수
-print(num_conv)     # 10진수
-print(hex(num_conv))# 16진수
+print(bin(num_conv)) # 2진수
+print(oct(num_conv)) # 8진수
+print(num_conv)      # 10진수
+print(hex(num_conv)) # 16진수
 
 print("4. -------------------------------------------------------------------")
 
@@ -510,6 +527,8 @@ print("15. -------------------------------------------------------------------")
    - built-in modules : Python에서 제공하는 공식 Library 들 입니다.Python Standard Library(os,  sys, time 등)이
                         여기에 해당됩니다.
    - sys.path : package의 __init__ 변수와 같이 String Value로된 list 입니다.
+
+   *중요 : import는 보통 함수 밖, 맨 위에 전역변수로 선언하는 것이 일반적이며 import를 함수 안에 선언하면 그 함수 내에서만 사용 가능하며 함수가 return이 되면 import는 풀린다.
 '''
 
 from firstfolder.firstfile import firstprint #or *
