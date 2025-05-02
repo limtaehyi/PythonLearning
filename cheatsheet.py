@@ -5,6 +5,9 @@
 # !! -- firstfolder/firstfile.py -- !!
 # !! -- firstfolder/secondfolder/secondfile.py -- !!
 
+# !! -- 필수모듈 -- !!
+# !! -- pip install chainmap -- !!
+
 # 변수 이름은 대부분 언더바(_)로 정의하거나 첫문자마다 대문자를 쓰는 낙타체를 많이씀.
 # 변수 이름은 가시성을 위해 동사+명사의 형태로 쓰는 것이 좋음.
 
@@ -77,6 +80,7 @@ print(type(test_dict))
 '''
 
 test_int.isnumeric
+
 
 print("2. -------------------------------------------------------------------")
 
@@ -518,6 +522,57 @@ otherobject = makeclass()
 print(id(newobject))
 otherobject.printdef("i will give this parameter too")
 
+
+'''
+ magic method
+  - 매직 매소드는 파이썬에서만 사용되는 특별한 매소드이며 이미 파이썬 내 정의 되어 있고 클래스 내부에서 메소드를 
+    오버라이딩 해서 사용할 수 있다.
+  - 또한 직접 호출하지 않고 정해진 규칙에 따라 호출된다.
+
+  __new__ : 객체 생성시 호출되고 init보다 먼저 실행됨
+  __init__ : 생성자
+  __del__ : 객체 소멸시
+  __str__, __repr__ : 객체의 문자열 표현
+  __iter__ : iterable 객체를 만들 때
+  __next__ : iterator 를 만들 때
+  __len__ : 객체 길이
+  __bool__ : bool
+  __add__, __sub__, __mul__, __truediv__ : 사칙연산
+
+  외에도 다양한 매직 메소드가 있다.
+'''
+
+class Makeiteasy(object):
+        def __init__(self, name, price):
+                self._name = name
+                self._price = price
+
+apple = Makeiteasy("apple", 10000)
+banana = Makeiteasy("banana", 20000)
+#print(apple._price + banana._price) 정상적으로 작동하지만 보기 좋지 않다.
+
+
+class Makeiteasy(object):
+        def __init__(self, name, price):
+                self._name = name
+                self._price = price
+
+        def __add__(self, target):
+                return self._price + target._price
+
+        def __sub__(self, target):
+                return self._price - target._price
+
+apple = Makeiteasy("apple", 10000)
+banana = Makeiteasy("banana", 20000)
+print(apple + banana)
+print(apple - banana)
+print(f"{apple} and {banana}")
+
+
+
+
+
 print("15. -------------------------------------------------------------------")
 
 '''
@@ -616,3 +671,82 @@ print(test(1)) # test(x=1, y=[])
 print(test(2)) # test(x=2, y=[1])  <- 위에 함수에서 return y가 리스트 '[1]' 로 메모리에 저장되어있다.
 print(test(3, [])) # test(x=3, y=[1,2], [])  <- y는 메모리 어딘가에 계속 있고 다시 아무 리스트를 준곳에 append된다.
 print(test(4)) # test(x=4, y=[1,2])
+
+
+print("20. -------------------------------------------------------------------")
+
+# 추가 지식들
+
+# 언더바 사용
+# 1. 숫자의 콤마 대신 사용으로 자릿수 구분
+hard_to_count = "1000000000000"
+easy_to_count = "1_000_000_000_000"
+
+# 2. 값의 무시 가능
+underbar_tup = (1, 2, 3, 4, 5)
+a, b, c, _, e = underbar_tup # 또는 a, *_, b = underbar_tup 으로 여러 값 무시 가능
+print(a, b, c, e)
+
+# 3. 이 모듈(파일)내에서만 사용하는 함수 선언
+# 외부에서 이 파일(cheatsheet.py)를 import 해서 _hi()를 실행하면 에러 발생
+def _hi():
+        print("hi")
+
+# 4. 파이썬 키워드와의 충돌 회피
+def print_(args):
+        print("this is not print func, this is print_ func")
+        print(args)
+
+print_([1, 2, 3, 4])
+
+
+# 튜플, 리스트, 딕셔너리의 병합
+print([1, 2, 3] + [4, 5, 6])
+
+print((1, 2, 3) + (4, 5, 6))
+
+new_list = [1, 2, 3]
+new_list += [4, 5, 6]
+print(new_list)
+
+new_tup = (1, 2, 3)
+new_tup += (4, 5, 6)
+print(new_tup)
+
+print({1, 2, 3} & {1, 4}) # 교집합(and)
+print({1, 2, 3} | {1, 4}) # 합집합(or)
+print({1, 2, 3} - {1, 4}) # 차집합(-)
+print({1, 2, 3} ^ {1, 4}) # 대칭차집합(xor)
+
+print({'a': 1} | {'a' : 3, 'b' : 2}) # 중복 값은 오른쪽 기준
+
+new_dict = {'a' : 1}
+new_dict |= {'a' : 3, 'b' : 2}
+print(new_dict)
+
+
+# 3로 나누어 떨어지면 "three", 5으로 나누어 떨어지면 "five", 둘다면 "threefive"
+for i in range(100):
+        match(i % 3, i % 5):
+                case(0, 0) : print("threefive")
+                case(0, _) : print("three")
+                case(_, 0) : print("five")
+                case _: print(i)
+
+
+print("21. -------------------------------------------------------------------")
+
+from collections import ChainMap
+
+example_account = {'id' : "IDX7326363752634", "type" : "account"}
+example_profile = {"name" : "Lim taehyi", "type" : "profile"}
+
+user = ChainMap(example_account, example_profile) # 두 딕셔너리를 병합후 객체로 출력
+
+print(user['id'])
+print(user['name'])
+print(user['type']) # 단 중복된 경우 왼쪽 기준
+
+user["created_on"] = "2000" # 추가도 가능
+
+print(user)
